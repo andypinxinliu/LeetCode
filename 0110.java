@@ -30,3 +30,19 @@ public class Solution {
         return Math.max(left, right) + 1;
     }
 }
+
+class Solution {
+   boolean res=true;
+    public boolean isBalanced(TreeNode root) {
+        getBalanced(root);
+        return res;
+    }
+    public int  getBalanced(TreeNode root) {
+         if(root==null||!res) return 0;
+        int le=getBalanced(root.left);
+        int ri=getBalanced(root.right);//获取左右子树高度
+        if(Math.abs(le-ri)>1) 
+            res=false;//不平衡
+        return Math.max(le,ri)+1;
+    }
+}
